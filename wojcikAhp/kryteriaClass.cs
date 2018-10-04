@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wojcikAhp
 {
-    class kryteriaClass
+    public class kryteriaClass
     {
         public int id = 0;
         public string nazwaKryterium;

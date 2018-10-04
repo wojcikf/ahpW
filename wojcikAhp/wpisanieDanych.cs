@@ -14,10 +14,10 @@ namespace wojcikAhp
     {
         public int kryteria;
         public int argumenty;
-        List<kryteriaClass> nazwyKryteriow = new List<kryteriaClass>();
-        public wpisanieDanych(kryteriaAlternatywyClass k)
+        List<kryteriaClass> listaKryteriow;
+        public wpisanieDanych(kryteriaAlternatywyClass k, List<kryteriaClass> listaKryteriow )
         {
-
+          
             this.kryteria = k.iloscKryteriow;
             this.argumenty = k.iloscAlternatyw;
 
@@ -33,10 +33,6 @@ namespace wojcikAhp
 
                 this.Controls.Add(labelBoxAdd);
                 this.Controls.Add(textBoxAdd);
-
-                nazwyKryteriow.Add(new kryteriaClass(i, textBoxAdd.Text));
-
-
             }
 
             InitializeComponent();
@@ -56,7 +52,10 @@ namespace wojcikAhp
 
         private void zapiszKryteria_Click(object sender, EventArgs e)
         {
-
+            /*for (int i = 1; i <= kryteria; i++) {
+             listaKryteriow.Add(new kryteriaClass(i, kryterium.Value));
+            }*/
+          
         }
     }
 }
