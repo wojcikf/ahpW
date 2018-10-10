@@ -14,35 +14,34 @@ namespace wojcikAhp
     {
         public int kryteria;
         public int argumenty;
-        List<kryteriaClass> listaKryteriow;
-        public wpisanieDanych(kryteriaAlternatywyClass k, List<kryteriaClass> listaKryteriow )
+        public static int licznik = 1;
+        List<kryteriaClass> listaKryteriow = new List<kryteriaClass>();
+        List<TextBox> textBoxList = new List <TextBox>();
+        private void createTextBox()
         {
-          
-            this.kryteria = k.iloscKryteriow;
-            this.argumenty = k.iloscAlternatyw;
-
-            for (int i = 1; i <= kryteria; i++) {
-
-                TextBox textBoxAdd = new TextBox();
-                textBoxAdd.Location = new Point(80, i * 25 );
-                textBoxAdd.Name = "kryterium" + i;
-                Label labelBoxAdd = new Label();
-                labelBoxAdd.Text = "Kryterium " + i;
-                labelBoxAdd.Width = 70;
-                labelBoxAdd.Location = new Point(10, i * 25);
-
-                this.Controls.Add(labelBoxAdd);
-                this.Controls.Add(textBoxAdd);
-            }
-
-            InitializeComponent();
+            TextBox textBoxAdd = new TextBox();
+            textBoxAdd.Location = new Point(80, licznik * 25);
+            textBoxAdd.Name = "kryterium" + licznik;
+            Label labelBoxAdd = new Label();
+            labelBoxAdd.Text = "Kryterium " + licznik;
+            labelBoxAdd.Width = 70;
+            labelBoxAdd.Location = new Point(10, licznik * 25);
+            textBoxList.Add(textBoxAdd);
+            this.Controls.Add(labelBoxAdd);
+            this.Controls.Add(textBoxAdd);
+            licznik++;
+            listaKryteriow.Add(new kryteriaClass(licznik, textBoxAdd.Text));
+        }
+        public wpisanieDanych(kryteriaClass k, List<kryteriaClass> listaKryteriowForm)
+        {
+            //l = listViewMain;
+            InitializeComponent(); 
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             TextBox btnAdd = new TextBox();
             this.Controls.Add(btnAdd);
-      
         }
 
         private void wpisanieDanych_Load(object sender, EventArgs e)
@@ -52,9 +51,21 @@ namespace wojcikAhp
 
         private void zapiszKryteria_Click(object sender, EventArgs e)
         {
-            /*for (int i = 1; i <= kryteria; i++) {
-             listaKryteriow.Add(new kryteriaClass(i, kryterium.Value));
-            }*/
+            foreach (TextBox t in textBoxList)
+            {
+                listaKryteriow.Add(new kryteriaClass(licznik, t.Text));
+               // l.Items.Add(t.Text);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            createTextBox();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
           
         }
     }

@@ -12,7 +12,7 @@ namespace wojcikAhp
 {
     public partial class Form1 : Form
     {
-       kryteriaAlternatywyClass k = new kryteriaAlternatywyClass();
+       kryteriaClass k = new kryteriaClass();
        List<kryteriaClass> nazwyKryteriow = new List<kryteriaClass>();
         public Form1()
         {
@@ -39,18 +39,26 @@ namespace wojcikAhp
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            k.iloscKryteriow = (int)numericUpDown1.Value;
+    
             
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            k.iloscAlternatyw = (int)numericUpDown1.Value;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (kryteriaClass t in nazwyKryteriow)
+            {
+                listViewMain.Items.Add(t.nazwaKryterium);
+            }
         }
     }
 }
