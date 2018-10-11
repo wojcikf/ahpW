@@ -17,6 +17,7 @@ namespace wojcikAhp
         public static int licznik = 1;
         List<kryteriaClass> listaKryteriow = new List<kryteriaClass>();
         List<TextBox> textBoxList = new List <TextBox>();
+        ListView listV;
         private void createTextBox()
         {
             TextBox textBoxAdd = new TextBox();
@@ -32,9 +33,9 @@ namespace wojcikAhp
             licznik++;
             listaKryteriow.Add(new kryteriaClass(licznik, textBoxAdd.Text));
         }
-        public wpisanieDanych(kryteriaClass k, List<kryteriaClass> listaKryteriowForm)
+        public wpisanieDanych(kryteriaClass k, List<kryteriaClass> listaKryteriowForm, ListView listView)
         {
-            //l = listViewMain;
+            listV = listView;
             InitializeComponent(); 
         }
 
@@ -54,9 +55,10 @@ namespace wojcikAhp
             foreach (TextBox t in textBoxList)
             {
                 listaKryteriow.Add(new kryteriaClass(licznik, t.Text));
-               // l.Items.Add(t.Text);
+                listView1.Items.Add(t.Text);
             }
-
+            listView1 = listV;
+            Refresh();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -14,6 +14,9 @@ namespace wojcikAhp
     {
        kryteriaClass k = new kryteriaClass();
        List<kryteriaClass> nazwyKryteriow = new List<kryteriaClass>();
+       ListView listView = new ListView();
+
+      
         public Form1()
         {
         
@@ -33,7 +36,7 @@ namespace wojcikAhp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            wpisanieDanych w = new wpisanieDanych(k, nazwyKryteriow);
+            wpisanieDanych w = new wpisanieDanych(k, nazwyKryteriow, listView );
             w.Show();
         }
 
@@ -59,6 +62,11 @@ namespace wojcikAhp
             {
                 listViewMain.Items.Add(t.nazwaKryterium);
             }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
